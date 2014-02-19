@@ -6,3 +6,10 @@ fun num_digits n =
 		1;
 
 (* Problem 2: return the maximum number of digits in a passed list *)
+fun max_digits nil = 0
+(*|	max_digits (x) = num_digits(x)*)
+|	max_digits (x::xs) =
+		if num_digits(x) > max_digits(xs) then
+				num_digits(x)
+		else
+			max_digits(xs);
