@@ -9,6 +9,10 @@ fun num_digits n =
 fun max_digits nil = 0
 |	max_digits (x::xs) =
 		if num_digits(x) > max_digits(xs) then
-				num_digits(x)
+			num_digits(x)
 		else
 			max_digits(xs);
+
+(* Problem 3: return the nth digit of the integer x *)
+fun nth_digit(x, n) = 0
+
