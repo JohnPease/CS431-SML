@@ -14,5 +14,8 @@ fun max_digits nil = 0
 			max_digits(xs);
 
 (* Problem 3: return the nth digit of the integer x *)
-fun nth_digit(x, n) = 0
-
+fun nth_digit(x, n) =
+	if n = 1 then
+		x - (x div 10 * 10)
+	else
+		nth_digit(x div 10, n - 1);
