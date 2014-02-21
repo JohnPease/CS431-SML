@@ -48,3 +48,5 @@ fun sort_nth_digit(n, L) =
 (* examples:
 radix_sort_max(3, [170, 45, 75, 90, 802, 2, 24, 66]) = [2, 24, 45, 66, 75, 90, 170, 802]
 *)
+
+fun radix_sort_max() = 0
