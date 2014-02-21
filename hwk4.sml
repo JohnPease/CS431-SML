@@ -35,14 +35,16 @@ sort_nth_digit(1, [723, 234, 345, 235]) = [723, 234, 345, 235]
 sort_nth_digit(2, [723, 234, 345, 235]) = [723, 234, 235, 345]
 sort_nth_digit(3, [723, 234, 345, 235]) = [234, 235, 345, 723]
 *)
-fun sort_nth_digit(n, L) = 0
-
-fun insertsort [] = []
-|	insertsort (n, x::xs) =
-	let fun insert (x:real, []) = [x]
-		|	insert (x:real, y::ys) = 
-				if nth_digit(x,n) <= nth_digit(y,n) then x::y::ys
-				else y::insert(x, ys)
-	in insert (x, insertsort (n, xs))
+fun sort_nth_digit(n, L) =
+	let fun caller (x, n, m, l) =
+			if x = 10 then
+				l
+			else
+				caller(x+1, n, m, l@bucket(x, n, m))
+	in caller(~1, n, L, [])
 	end;
 
+(* Problem 6: sort the integer list L based based on radix sort algorithm where m is the maximum number of digits of the integers in L *)
+(* examples:
+radix_sort_max(3, [170, 45, 75, 90, 802, 2, 24, 66]) = [2, 24, 45, 66, 75, 90, 170, 802]
+*)
