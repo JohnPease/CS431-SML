@@ -1,3 +1,5 @@
+(* John Pease, CS431 Homework 4 *)
+
 (* Problem 1: return the number of digits in passed number *)
 fun num_digits n = 
 	if n > 10 then
@@ -41,12 +43,20 @@ fun sort_nth_digit(n, L) =
 				l
 			else
 				caller(x+1, n, m, l@bucket(x, n, m))
-	in caller(~1, n, L, [])
+	in caller(~1, n, L, []) 
 	end;
 
 (* Problem 6: sort the integer list L based based on radix sort algorithm where m is the maximum number of digits of the integers in L *)
 (* examples:
 radix_sort_max(3, [170, 45, 75, 90, 802, 2, 24, 66]) = [2, 24, 45, 66, 75, 90, 170, 802]
 *)
-
-fun radix_sort_max() = 0
+(* not sure what the syntax is for passing the return value of a function into another function call...
+fun radix_sort_max(m, L) = 0
+	let fun helper(x, n, a) =
+		if x = n then (
+			a
+		) else (
+			helper(x+1, n, sort_nth_digit(x, a))
+		)
+	in helper(~1, m, L)
+	end; *)
