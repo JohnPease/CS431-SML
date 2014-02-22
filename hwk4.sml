@@ -50,17 +50,13 @@ fun sort_nth_digit(n, L) =
 (* examples:
 radix_sort_max(3, [170, 45, 75, 90, 802, 2, 24, 66]) = [2, 24, 45, 66, 75, 90, 170, 802]
 *)
-(* overflow exception... not sure why *)
-fun radix_sort_max(m:int, L:int list) =
+fun radix_sort_max(m:int, nil) = nil
+|	radix_sort_max(m:int, L:int list) =
 	let fun helper(x:int, n:int, A:int list) =
-		if x = n then (
+		if x = n+1 then (
 			A
 		) else (
-			A = sort_nth_digit(x,A);
-			helper(x+1, n, A)
+			helper(x+1, n, sort_nth_digit(x,A))
 		)
-	in helper(0, m, L)
+	in helper(1, m, L)
 	end;
-
-
-(* radix_sort_max(3, [170, 45, 75, 90, 802, 2, 24, 66]) *)
