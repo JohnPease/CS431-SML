@@ -32,4 +32,3 @@ fun filter (a, x::xs) =
 			helper(a, xs, l)
 	in helper(a, x::xs, [])
 	end;
-	
