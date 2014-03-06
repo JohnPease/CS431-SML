@@ -46,6 +46,7 @@ datatype 'data tree =
 	Node of 'data tree * 'data * 'data tree;
 
 (* Problem 2.1: Define a function isComplete: 'a tree -> bool which tests whether a tree is complete or not (makes sure every Node has either 2 Empty children or two Node children ) *)
+fun isComplete x = true
 
 (* Problem 2.2: Define a function makeBST: 'a list -> ('a * 'a -> bool) -> 'a tree which organizes the items in a list into a binary search tree (not necessarily balanced and all items are unique) *)
 
