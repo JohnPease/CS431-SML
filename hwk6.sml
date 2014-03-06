@@ -27,8 +27,7 @@ fun grade2point A = 4.0
 (* Problem 1.4: Define a function gpa: grade list -> real that takes a list of letter grades and returns the grade point average of the grades *)
 fun gpa [] = 0.0
 |	gpa(x::xs) =
-		let fun 
-				helper (a, b, []) = 0.0
+		let fun helper (a, b, []) = 0.0
 			|	helper(i, l, x::xs) =
 					if xs = nil then
 						(i+(grade2point x)) / l
@@ -46,8 +45,14 @@ datatype 'data tree =
 	Node of 'data tree * 'data * 'data tree;
 
 (* Problem 2.1: Define a function isComplete: 'a tree -> bool which tests whether a tree is complete or not (makes sure every Node has either 2 Empty children or two Node children ) *)
+(* idea:
+if left = Empty AND right = Empty then
+	false
+else
+	check middle;
+*)
 fun isComplete x = true
 
-(* Problem 2.2: Define a function makeBST: 'a list -> ('a * 'a -> bool) -> 'a tree which organizes the items in a list into a binary search tree (not necessarily balanced and all items are unique) *)
+(* Problem 2.2: Define a function makeBST: ('a list -> ('a * 'a -> bool) -> 'a tree) which organizes the items in a list into a binary search tree (not necessarily balanced and all items are unique) *)
 
 (* Problem 2.3: Define a function searchBST: ''a tree -> (''a * ''a -> bool) -> ''a -> bool that searches a binary search tree for a given data element and returns true if it is found and false otherwise *)
