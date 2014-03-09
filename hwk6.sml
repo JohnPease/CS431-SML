@@ -45,21 +45,6 @@ datatype 'data tree =
 	Node of 'data tree * 'data * 'data tree;
 
 (* Problem 2.1: Define a function isComplete: 'a tree -> bool which tests whether a tree is complete or not (makes sure every Node has either 2 Empty children or two Node children ) *)
-(* idea:
-if left = EMPTY
-	if right = EMPTY
-		true
-	else
-		false
-	end
-else
-	if not (right = EMPTY)
-		true
-	else
-		false
-	end
-end 
-*)
 fun isComplete Empty = true
 |	isComplete (Node(Empty, y, Empty)) = true
 |	isComplete (Node(Empty, y, z)) = false
