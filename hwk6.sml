@@ -46,12 +46,29 @@ datatype 'data tree =
 
 (* Problem 2.1: Define a function isComplete: 'a tree -> bool which tests whether a tree is complete or not (makes sure every Node has either 2 Empty children or two Node children ) *)
 (* idea:
-if left = Empty AND right = Empty then
-	false
+if left = EMPTY
+	if right = EMPTY
+		true
+	else
+		false
+	end
 else
-	check middle;
+	if not (right = EMPTY)
+		true
+	else
+		false
+	end
+end 
 *)
-fun isComplete x = true
+fun isComplete Empty = true
+|	isComplete (Node(Empty, y, Empty)) = true
+|	isComplete (Node(Empty, y, z)) = false
+|	isComplete (Node(x, y, Empty)) = false
+|	isComplete (Node(x,y,z)) =
+		if (isComplete(x)) = (isComplete(z)) then
+			true	
+		else
+			false; 
 
 (* Problem 2.2: Define a function makeBST: ('a list -> ('a * 'a -> bool) -> 'a tree) which organizes the items in a list into a binary search tree (not necessarily balanced and all items are unique) *)
 
