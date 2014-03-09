@@ -30,6 +30,9 @@ fun is_stop_word "" = []
 		in helper(splitter(sentence), [])
 		end;
 
+(* professor solution:
+fun is_stop_word sentence = map (is_member (splitter stop_words)) (splitter sentence); *)
+
 
 (* Problem 4: takes a string sentence and returns the list of unique stop words *)
 (* usage: get_stop_words("hello there, how are you doing there?") *)
