@@ -56,5 +56,22 @@ fun isComplete Empty = true
 			false; 
 
 (* Problem 2.2: Define a function makeBST: ('a list -> ('a * 'a -> bool) -> 'a tree) which organizes the items in a list into a binary search tree (not necessarily balanced and all items are unique) *)
+fun insert (a,Empty,c) = Node(Empty, a, Empty)
+|   insert (a,Node(x,y,z),c) =
+		if c(a,y) then 
+			Node(insert(a, x, c),y,z)
+		else 
+			Node(x,y,insert(a, z, c));
+
+fun makeBST L x = foldr (fn (i,c) => insert(i, c, x)) Empty L;
 
 (* Problem 2.3: Define a function searchBST: ''a tree -> (''a * ''a -> bool) -> ''a -> bool that searches a binary search tree for a given data element and returns true if it is found and false otherwise *)
+fun searchBST (Empty,c,a) = false
+|	searchBST (Node(x,y,z),c,a) =
+		if y = a then
+			true
+		else if c(x,y) then
+			searchBST(x,c,a)
+		else
+			searchBST(z,c,a);
+
