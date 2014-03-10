@@ -66,12 +66,11 @@ fun insert (a,Empty,c) = Node(Empty, a, Empty)
 fun makeBST L x = foldr (fn (i,c) => insert(i, c, x)) Empty L;
 
 (* Problem 2.3: Define a function searchBST: ''a tree -> (''a * ''a -> bool) -> ''a -> bool that searches a binary search tree for a given data element and returns true if it is found and false otherwise *)
-fun searchBST (Empty,c,a) = false
-|	searchBST (Node(x,y,z),c,a) =
-		if y = a then
-			true
-		else if c(x,y) then
-			searchBST(x,c,a)
+fun searchBST Empty f e = false
+|	searchBST (Node(a,b,c)) f e =
+		if b = e then
+			true 
+		else if f(e,b) then
+			(searchBST a f e)
 		else
-			searchBST(z,c,a);
-
+			(searchBST c f e);	
