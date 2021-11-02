@@ -25,16 +25,7 @@ fun grade2point A = 4.0
 |	grade2point F = 0.0;
 
 (* Problem 1.4: Define a function gpa: grade list -> real that takes a list of letter grades and returns the grade point average of the grades *)
-fun gpa [] = 0.0
-|	gpa(x::xs) =
-		let fun helper (a, b, []) = 0.0
-			|	helper(i, l, x::xs) =
-					if xs = nil then
-						(i+(grade2point x)) / l
-					else
-						helper(i+(grade2point x), l+1.0, xs);
-		in helper(0.0, 1.0, x::xs)
-		end;
+fun gpa x = (foldr (op +) 0.0 (map grade2point x)) / Real.fromInt (length x);
 
 (* Problem 1.5: Define a function gpaFromPercent: real list -> real that takes a list of percentage grades and returns the grade point average *)
 fun gpaFromPercent L = gpa (map percent2grade L);
